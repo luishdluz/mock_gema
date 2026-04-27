@@ -1,0 +1,1473 @@
+:root {
+    --limitado: #c21832;
+    --general: #f08019;
+    --publico: #44ac34;
+    --no-significativa: #5a5959;
+    --primary: #007279;
+    --bg-app: #f4f7f6;
+}
+
+body {
+    background-color: var(--bg-app);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+.contenedor-app {
+    padding: 120px 40px 40px 40px; /* Margen superior para el header fijo */
+}
+
+/* Toolbar */
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    position: relative;
+    flex-grow: 1;
+    max-width: 600px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 40px 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+.search-box svg {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+/* Grid y Cards */
+.fuentes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.card-fuente {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border-bottom: 5px solid transparent;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-fuente:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Colores de clasificación */
+.card-fuente[data-clase="Uso Limitado"]:hover { border-bottom-color: var(--limitado); }
+.card-fuente[data-clase="Uso General"]:hover { border-bottom-color: var(--general); }
+.card-fuente[data-clase="Uso Público"]:hover { border-bottom-color: var(--publico); }
+.card-fuente[data-clase="NO Significativa"]:hover { border-bottom-color: var(--no-significativa); }
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.card-id {
+    font-size: 0.8rem;
+    color: #777;
+    background: #eee;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.card-fuente h3 {
+    margin: 10px 0;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.card-desc {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-icon {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-icon:hover {
+    background: #f0f0f0;
+}
+
+/* Modales */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 800px;
+}
+
+.modal-content.large {
+    max-width: 1100px;
+}
+
+.close-modal {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Admin Tabs/Sections */
+.admin-nav {
+    display: flex;
+    gap: 15px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.admin-nav-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+}
+
+.admin-nav-item.active {
+    border-bottom-color: var(--primary);
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contenedor-app { padding: 80px 15px 15px 15px; }
+    .toolbar { flex-direction: column; align-items: stretch; }
+}
+
+:root {
+    --bg-nav: #F5F6FA;
+    --primary-gema: #007279;
+    --accent-blue: #204C74;
+    --text-dark: #2D3436;
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    background-color: #f0f2f5;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    margin: 0;
+}
+
+/* Espaciado para los dos headers fijos */
+.contenedor-app {
+    padding: 180px 40px 40px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Nuevo Menú Superior GEMA */
+.gema-nav-superior {
+    position: fixed;
+    top: 100px; /* Debajo del header principal */
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: var(--bg-nav);
+    box-shadow: var(--shadow-soft);
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e1e4e8;
+    transition: var(--transition);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 40px;
+    gap: 20px;
+}
+
+/* Marca e Icono */
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: fit-content;
+}
+
+.gema-icon-logo {
+    height: 70px;
+    width: 70px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    transition: transform 0.3s ease;
+}
+
+.nav-brand:hover .gema-icon-logo {
+    transform: rotate(-10deg) scale(1.1);
+}
+
+.gema-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent-blue);
+    letter-spacing: 1px;
+}
+
+/* Buscador Estilizado */
+.nav-search {
+    flex-grow: 1;
+    max-width: 700px;
+}
+
+.search-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.search-wrapper input {
+    width: 100%;
+    padding: 12px 20px 12px 45px;
+    border: 2px solid transparent;
+    border-radius: 30px;
+    background: white;
+    font-size: 0.95rem;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    transition: var(--transition);
+}
+
+.search-wrapper input:focus {
+    outline: none;
+    border-color: #04b3bb;
+    box-shadow: 0 0 0 4px rgba(4, 179, 187, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #b2bec3;
+    transition: color 0.3s;
+}
+
+.search-wrapper input:focus + .search-icon {
+    color: var(--primary-gema);
+}
+
+/* Botón Nueva Fuente */
+.btn-nueva-fuente-nav {
+    background: var(--primary-gema);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 114, 121, 0.3);
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.btn-nueva-fuente-nav:hover {
+    background: #005a60;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 114, 121, 0.4);
+}
+
+.btn-nueva-fuente-nav:active {
+    transform: translateY(0);
+}
+
+/* Títulos de sección */
+.section-header {
+    margin-bottom: 30px;
+}
+
+.section-header h2 {
+    color: var(--accent-blue);
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.section-header p {
+    color: #636e72;
+    margin: 5px 0 0 0;
+}
+
+/* Responsivo */
+@media (max-width: 1126px) {
+    .gema-nav-superior { top: 60px; }
+    .contenedor-app { padding-top: 140px; }
+}
+
+@media (max-width: 768px) {
+    .nav-container { padding: 0 15px; }
+    .gema-title, .btn-nueva-fuente-nav span { display: none; }
+    .nav-brand { gap: 0; }
+}
+
+/* Aseguramos que los rellenos no aumenten el tamaño de los elementos */
+* {
+    box-sizing: border-box;
+}
+
+/* ... (resto de tus estilos anteriores) ... */
+
+@media (max-width: 768px) {
+    .gema-nav-superior {
+        height: auto; 
+        padding: 10px 0;
+        top: 60px;
+    }
+
+    .nav-container {
+        display: flex;
+        flex-wrap: wrap; /* Permitimos que los elementos se envuelvan */
+        flex-direction: row; /* Volvemos a fila para usar order */
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px;
+        gap: 10px;
+    }
+
+    /* 1. Logo y Título (Arriba a la izquierda) */
+    .nav-brand {
+        order: 1;
+        flex: 1;
+        justify-content: flex-start;
+    }
+    
+    .gema-title {
+        display: block; /* Lo volvemos a mostrar pero más pequeño */
+        font-size: 1.2rem;
+    }
+
+    .gema-icon-logo {
+        height: 30px;
+        width: 30px;
+    }
+
+    /* 2. Botón Nueva Fuente (Arriba a la derecha) */
+    .nav-actions {
+        order: 2;
+        width: auto;
+        flex: 0;
+    }
+
+    .btn-nueva-fuente-nav {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        border-radius: 8px;
+    }
+    
+    .btn-nueva-fuente-nav span {
+        display: none; /* Ocultamos el texto "Nueva Fuente" para dejar solo el icono (+) en móviles muy pequeños */
+    }
+    
+    /* Si quieres que se vea el texto si hay espacio, usa esto en su lugar: */
+    /* @media (min-width: 400px) { .btn-nueva-fuente-nav span { display: inline; } } */
+
+    /* 3. Buscador (Abajo, ancho completo) */
+    .nav-search {
+        order: 3;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 5px;
+    }
+
+    .search-wrapper input {
+        width: 100%;
+        padding: 10px 15px 10px 40px; /* Ajustamos padding para que no se corte */
+    }
+
+    /* Ajuste del contenido principal para que no se tape */
+    .contenedor-app {
+        padding-top: 190px;
+    }
+}
+
+/* --- Estilos base del Card --- */
+.card-fuente {
+    background: white;
+    border-radius: 16px; /* Esquinas más suaves */
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03); /* Sombra base muy tenue */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.4s ease; /* Transición suave para el aura */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0,0,0,0.05); /* Borde casi invisible */
+    overflow: hidden;
+}
+
+/* Elevación sutil al hacer hover */
+.card-fuente:hover {
+    transform: translateY(-8px);
+    background: #ffffff;
+}
+
+/* --- Efecto de Aura Sutil por Clasificación --- */
+
+/* Uso Limitado (#c21832) */
+.card-fuente[data-clase="Uso Limitado"]:hover { 
+    box-shadow: 0 15px 35px rgba(194, 24, 50, 0.15), 
+                0 0 15px rgba(194, 24, 50, 0.08); 
+}
+
+/* Uso General (#f08019) */
+.card-fuente[data-clase="Uso General"]:hover { 
+    box-shadow: 0 15px 35px rgba(240, 128, 25, 0.15), 
+                0 0 15px rgba(240, 128, 25, 0.08); 
+}
+
+/* Uso Público (#44ac34) */
+.card-fuente[data-clase="Uso Público"]:hover { 
+    box-shadow: 0 15px 35px rgba(68, 172, 52, 0.15), 
+                0 0 15px rgba(68, 172, 52, 0.08); 
+}
+
+/* NO Significativa (#5a5959) */
+.card-fuente[data-clase="NO Significativa"]:hover { 
+    box-shadow: 0 15px 35px rgba(90, 89, 89, 0.15), 
+                0 0 15px rgba(90, 89, 89, 0.08); 
+}
+
+/* Indicador visual de color interno (opcional para reforzar la categoría) */
+.card-fuente::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    opacity: 0.7;
+}
+
+.card-fuente[data-clase="Uso Limitado"]::before { background-color: #c21832; } [cite: 98]
+.card-fuente[data-clase="Uso General"]::before { background-color: #f08019; } [cite: 99]
+.card-fuente[data-clase="Uso Público"]::before { background-color: #44ac34; } [cite: 99]
+.card-fuente[data-clase="NO Significativa"]::before { background-color: #5a5959; } [cite: 99]
+
+/* --- Estilos base del Card --- */
+.card-fuente {
+    background: white;
+    border-radius: 16px; /* Esquinas más suaves */
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03); /* Sombra base muy tenue */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.4s ease; /* Transición suave para el aura */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0,0,0,0.05); /* Borde casi invisible */
+    overflow: hidden;
+}
+
+/* Elevación sutil al hacer hover */
+.card-fuente:hover {
+    transform: translateY(-8px);
+    background: #ffffff;
+}
+
+/* --- Efecto de Aura Sutil por Clasificación --- */
+
+/* Uso Limitado (#c21832) */
+.card-fuente[data-clase="Uso Limitado"]:hover { 
+    box-shadow: 0 15px 35px rgba(194, 24, 50, 0.15), 
+                0 0 15px rgba(194, 24, 50, 0.08); 
+}
+
+/* Uso General (#f08019) */
+.card-fuente[data-clase="Uso General"]:hover { 
+    box-shadow: 0 15px 35px rgba(240, 128, 25, 0.15), 
+                0 0 15px rgba(240, 128, 25, 0.08); 
+}
+
+/* Uso Público (#44ac34) */
+.card-fuente[data-clase="Uso Público"]:hover { 
+    box-shadow: 0 15px 35px rgba(68, 172, 52, 0.15), 
+                0 0 15px rgba(68, 172, 52, 0.08); 
+}
+
+/* NO Significativa (#5a5959) */
+.card-fuente[data-clase="NO Significativa"]:hover { 
+    box-shadow: 0 15px 35px rgba(90, 89, 89, 0.15), 
+                0 0 15px rgba(90, 89, 89, 0.08); 
+}
+
+/* Indicador visual de color interno (opcional para reforzar la categoría) */
+.card-fuente::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    opacity: 0.7;
+}
+
+.card-fuente[data-clase="Uso Limitado"]::before { background-color: #c21832; } [cite: 98]
+.card-fuente[data-clase="Uso General"]::before { background-color: #f08019; } [cite: 99]
+.card-fuente[data-clase="Uso Público"]::before { background-color: #44ac34; } [cite: 99]
+.card-fuente[data-clase="NO Significativa"]::before { background-color: #5a5959; } [cite: 99]
+
+/* 1. Reset de visibilidad para el indicador lateral */
+.card-fuente::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    /* Por defecto oculto en todas */
+    display: none; 
+}
+
+/* 2. Activar SOLO en la primera card del contenedor */
+.card-fuente:first-child::before {
+    display: block;
+}
+
+/* 3. Colores del indicador según clasificación (aplica a la primera card) */
+.card-fuente[data-clase="Uso Limitado"]::before { background-color: #c21832; }
+.card-fuente[data-clase="Uso General"]::before { background-color: #f08019; }
+.card-fuente[data-clase="Uso Público"]::before { background-color: #44ac34; }
+.card-fuente[data-clase="NO Significativa"]::before { background-color: #5a5959; }
+
+/* 4. Configuración del Aura Inferior (Hover) */
+.card-fuente {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+    /* Importante: No usar overflow:hidden aquí o se cortará el aura de abajo */
+}
+
+.card-fuente:hover {
+    transform: translateY(-5px);
+}
+
+/* AURA SOLO ABAJO:
+   Sintaxis: box-shadow: [h-offset] [v-offset] [blur] [spread] [color]
+   Al poner un spread negativo (-15px), la sombra se encoge hacia el centro,
+   y al poner un v-offset grande (25px), la empujamos hacia abajo para que 
+   solo asome por ese borde.
+*/
+
+.card-fuente[data-clase="Uso Limitado"]:hover { 
+    box-shadow: 0 25px 30px -15px rgba(194, 24, 50, 0.5); 
+}
+
+.card-fuente[data-clase="Uso General"]:hover { 
+    box-shadow: 0 25px 30px -15px rgba(240, 128, 25, 0.5); 
+}
+
+.card-fuente[data-clase="Uso Público"]:hover { 
+    box-shadow: 0 25px 30px -15px rgba(68, 172, 52, 0.5); 
+}
+
+.card-fuente[data-clase="NO Significativa"]:hover { 
+    box-shadow: 0 25px 30px -15px rgba(90, 89, 89, 0.5); 
+}
+
+/* 1. Primero: Definimos la barrita pero la OCULTAMOS para todas las cards */
+.card-fuente::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    display: none; /* <--- Esto asegura que nadie la muestre por defecto */
+    border-top-left-radius: 12px; /* Opcional: para que encaje con la curva de la card */
+    border-bottom-left-radius: 12px;
+}
+
+/* 2. Segundo: La ACTIVAMOS únicamente para la primera card del contenedor */
+.card-fuente:first-child::before {
+    display: block;
+}
+
+/* 3. Tercero: Asignamos los colores (solo se verán en la que tenga el display: block) */
+.card-fuente[data-clase="Uso Limitado"]::before { background-color: #c21832; }
+.card-fuente[data-clase="Uso General"]::before { background-color: #f08019; }
+.card-fuente[data-clase="Uso Público"]::before { background-color: #44ac34; }
+.card-fuente[data-clase="NO Significativa"]::before { background-color: #5a5959; }
+
+/* 4. Mantenemos tu Aura que ya te gustó (solo hacia abajo) */
+.card-fuente {
+    background: white;
+    border-radius: 12px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.card-fuente:hover {
+    transform: translateY(-5px);
+}
+
+.card-fuente[data-clase="Uso Limitado"]:hover { box-shadow: 0 25px 30px -15px rgba(194, 24, 50, 0.5); }
+.card-fuente[data-clase="Uso General"]:hover { box-shadow: 0 25px 30px -15px rgba(240, 128, 25, 0.5); }
+.card-fuente[data-clase="Uso Público"]:hover { box-shadow: 0 25px 30px -15px rgba(68, 172, 52, 0.5); }
+.card-fuente[data-clase="NO Significativa"]:hover { box-shadow: 0 25px 30px -15px rgba(90, 89, 89, 0.5); }
+
+/* --- ELIMINACIÓN RADICAL DE BARRAS SOLIDAS --- */
+
+/* 1. Anulamos cualquier pseudoelemento que se haya creado (el origen de la barra) */
+.card-fuente::before, 
+.card-fuente::after {
+    display: none !important;
+    content: none !important;
+    width: 0 !important;
+}
+
+/* 2. Definimos la card con un borde UNIFORME en los 4 lados */
+.card-fuente {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    /* Forzamos un borde gris muy tenue e igual en todo el contorno */
+    border: 1px solid rgba(0,0,0,0.08) !important; 
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 3. Animación de elevación al pasar el mouse */
+.card-fuente:hover {
+    transform: translateY(-5px);
+    background: #fff;
+}
+
+/* 4. AURA ÚNICAMENTE EN LA PARTE INFERIOR AL HACER HOVER
+   Configuración: 0 desplazamiento horizontal, 25px hacia abajo, 
+   30px de difuminado y -15px de propagación para esconder los lados.
+*/
+
+/* Uso Limitado */
+.card-fuente[data-clase="Uso Limitado"]:hover { 
+    box-shadow: 0 25px 30px -15px rgba(194, 24, 50, 0.5) !important; 
+}
+
+/* Uso General */
+.card-fuente[data-clase="Uso General"]:hover { 
+    box-shadow: 0 25px 30px -15px rgba(240, 128, 25, 0.5) !important; 
+}
+
+/* Uso Público */
+.card-fuente[data-clase="Uso Público"]:hover { 
+    box-shadow: 0 25px 30px -15px rgba(68, 172, 52, 0.5) !important; 
+}
+
+/* NO Significativa */
+.card-fuente[data-clase="NO Significativa"]:hover { 
+    box-shadow: 0 25px 30px -15px rgba(90, 89, 89, 0.5) !important; 
+}
+
+
+/* --- Ajustes de Modal --- */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* El fondo gris */
+    backdrop-filter: blur(3px); /* Efecto de desenfoque moderno */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 0; /* Quitamos padding para que el header de la tabla pegue arriba */
+    border-radius: 12px;
+    width: 90%;
+    max-width: 1000px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden; /* Para que las esquinas de la tabla respeten el radio del modal */
+    animation: modalSlideDown 0.3s ease-out;
+}
+
+@keyframes modalSlideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* --- Tabla de Previsualización GEMA --- */
+.preview-header {
+    background: #F5F6FA;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.preview-header h3 { margin: 0; color: #204C74; }
+
+.table-wrapper {
+    padding: 20px;
+    overflow-x: auto; /* Esto la hace responsiva */
+}
+
+.gema-preview-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Evita que se amontone en móvil */
+}
+
+.gema-preview-table th {
+    background-color: #fcfcfc;
+    color: #555;
+    font-weight: 600;
+    text-align: left;
+    padding: 15px;
+    border-bottom: 2px solid #eee;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.gema-preview-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #444;
+    font-size: 0.9rem;
+}
+
+.gema-preview-table tr:hover {
+    background-color: #f9f9ff;
+}
+
+/* Badge para datos en la tabla */
+.cell-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    background: #e1e8ed;
+}
+
+.btn-cerrar-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #888;
+}
+
+
+/* --- Modal de Previsualización --- */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 2000; /* Por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px); /* Efecto de cristal esmerilado */
+}
+
+.modal-content.preview-size {
+    background-color: #fff;
+    margin: 5% auto;
+    width: 90%;
+    max-width: 1100px;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    overflow: hidden; /* Corta los bordes de la tabla para que sigan el radio del modal */
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* --- Estructura Interna de la Tabla --- */
+.preview-header {
+    background: #F5F6FA;
+    padding: 20px 25px;
+    border-bottom: 1px solid #e1e4e8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.preview-header h3 { margin: 0; color: #204C74; font-size: 1.4rem; }
+
+.table-responsive-container {
+    padding: 0;
+    overflow-x: auto; /* Scroll horizontal en móviles */
+    background: white;
+}
+
+.gema-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px; /* Asegura que la tabla no se amontone */
+}
+
+.gema-table th {
+    background: #04b3bb;
+    color: #ffffff;
+    font-weight: 700;
+    text-align: center;
+    padding: 18px 15px;
+    border-bottom: 2px solid #edf2f7;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.gema-table td {
+    padding: 15px;
+    border-bottom: 1px solid #f1f4f8;
+    color: #2d3748;
+    font-size: 0.95rem;
+}
+
+.gema-table tr:hover { background: #f9fbff; }
+
+/* Badges de estado en la tabla */
+.status-pill {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    display: inline-block;
+}
+.status-success { background: #e6fffa; color: #285e61; }
+.status-error { background: #fff5f5; color: #9b2c2c; }
+
+.btn-close-preview {
+    background: #eee;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #666;
+    transition: 0.2s;
+}
+.btn-close-preview:hover { background: #e2e8f0; color: #000; }
+
+
+/*ADMIN*/
+/* --- Estilos de Administración --- */
+.modal-content.admin-size {
+    max-width: 1200px;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 25px;
+}
+
+/* Tabs */
+.admin-tabs {
+    display: flex;
+    background: #F5F6FA;
+    border-bottom: 1px solid #ddd;
+    padding: 0 20px;
+}
+
+.tab-btn {
+    padding: 15px 25px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #666;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s;
+}
+
+.tab-btn.active {
+    color: var(--primary-gema);
+    border-bottom-color: var(--primary-gema);
+}
+
+/* Formulario Metadatos */
+.grid-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.form-group.full { grid-column: 1 / -1; }
+
+.clasif-select {
+    font-weight: bold;
+    color: white;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+/* Diccionario Editable */
+.diccionario-container {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.btn-add {
+    background: #44ac34;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+/* Permisos */
+.permisos-split {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+}
+
+.app-list, .user-list {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px;
+    background: #fcfcfc;
+}
+
+.app-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Footer Modal */
+.admin-footer {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    text-align: right;
+    background: #fff;
+}
+
+/* --- Navegación de Tabs en la Modal --- */
+.admin-tabs {
+    display: flex;
+    background: #F5F6FA;
+    border-bottom: 1px solid #ddd;
+    padding: 0; /* Sin padding lateral para que llegue a los bordes */
+    
+    /* Scroll horizontal en móviles */
+    overflow-x: auto; 
+    scrollbar-width: none; /* Oculta scrollbar en Firefox */
+    -ms-overflow-style: none; /* Oculta scrollbar en IE/Edge */
+}
+
+/* Oculta scrollbar en Chrome, Safari y Opera */
+.admin-tabs::-webkit-scrollbar {
+    display: none; 
+}
+
+.tab-btn {
+    flex: 1; /* Hace que todos los tabs crezcan por igual para ocupar el ancho total */
+    min-width: 140px; /* Asegura que el texto no se amontone en pantallas pequeñas */
+    padding: 18px 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #666;
+    border-bottom: 4px solid transparent; /* Borde un poco más grueso para que resalte */
+    transition: all 0.3s ease;
+    white-space: nowrap; /* Evita que el texto salte de línea */
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.tab-btn:hover {
+    background: rgba(0, 114, 121, 0.05);
+    color: var(--primary-gema);
+}
+
+.tab-btn.active {
+    color: var(--primary-gema);
+    border-bottom-color: var(--primary-gema);
+    background: white; /* Resalta el tab activo */
+}
+
+/* Ajuste para móviles: si hay muchos tabs, se activará el scroll */
+@media (max-width: 600px) {
+    .tab-btn {
+        flex: none; /* Desactiva el crecimiento equitativo para permitir el scroll natural */
+        padding: 15px 20px;
+    }
+}
+
+/* --- Metadatos Dinámicos --- */
+.metadata-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.metadata-card {
+    background: #fff;
+    border: 1px solid #e1e4e8;
+    border-radius: 10px;
+    padding: 15px;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.metadata-card:hover {
+    border-color: #04b3bb;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.metadata-card .delete-field {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.metadata-card:hover .delete-field {
+    opacity: 1;
+}
+
+/* Clasificación Especial */
+.clasif-banner {
+    grid-column: 1 / -1;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+    transition: background 0.5s ease;
+}
+
+.clasif-banner select {
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.clasif-banner select option {
+    color: #333;
+}
+
+/* Efectos de Input */
+.form-control-gema {
+    border: 2px solid #eee;
+    border-radius: 8px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-control-gema:focus {
+    border-color: #04b3bb;
+    background: #f0f9f9;
+}
+
+.label-editable {
+    font-size: 0.75rem;
+    color: #007279;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    background: none;
+    width: 100%;
+}
+
+
+/* Estilos específicos para las cards del Diccionario */
+.diccionario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.dic-card {
+    border-top: 2px solid #04b3bb; /* Un detalle para diferenciarlas de metadatos */
+}
+
+.dic-row-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.dic-row-check input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.catalogo-area {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8rem;
+    background: #f8f9fa;
+}
+
+/* --- Diccionario Compacto --- */
+.diccionario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Más columnas por fila */
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.dic-card {
+    padding: 12px !important;
+    gap: 5px !important;
+    background: #ffffff;
+}
+
+.dic-card .label-editable {
+    font-size: 0.65rem; /* Más pequeño */
+    margin-bottom: 2px;
+}
+
+.dic-card .form-control-gema {
+    padding: 5px 8px; /* Más estrecho */
+    font-size: 0.85rem;
+}
+
+.dic-compact-row {
+    display: flex;
+    gap: 8px;
+}
+
+.dic-compact-row > div {
+    flex: 1;
+}
+
+/* Área de catálogo más discreta */
+.catalogo-area {
+    height: 60px; /* Altura fija inicial */
+    resize: vertical;
+}
+
+.add-dic-card {
+    border: 2px dashed #ccc;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    min-height: 200px;
+    transition: all 0.3s;
+}
+
+.add-dic-card:hover {
+    border-color: #04b3bb;
+    background: #f0f9f9;
+}
+
+.diccionario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    padding-bottom: 20px;
+}
+
+
+/*** PERMISOS ***/
+/* --- Capa de Permisos --- */
+.permisos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.app-card {
+    border: 1px solid #e1e4e8;
+    border-radius: 12px;
+    background: #fff;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-card.inactive {
+    opacity: 0.6;
+    background: #f8f9fa;
+    border-style: dashed;
+}
+
+.app-card-header {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.app-card-body {
+    padding: 15px;
+    flex-grow: 1;
+}
+
+/* Switches de Activación */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px; width: 14px;
+    left: 3px; bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider { background-color: var(--primary-gema); }
+input:checked + .slider:before { transform: translateX(20px); }
+
+/* Chips de Usuarios */
+.user-chips-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.user-chip {
+    background: #eef2f7;
+    color: #204C74;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #d1d9e6;
+}
+
+.user-chip .remove-user {
+    cursor: pointer;
+    color: #c21832;
+    font-weight: bold;
+}
+
+
+/* --- Reglas de Exposición --- */
+.reglas-grid-fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.field-toggle-card {
+    padding: 12px;
+    border: 1px solid #e1e4e8;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #f8f9fa;
+}
+
+.field-toggle-card.active {
+    border-color: var(--primary-gema);
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 114, 121, 0.1);
+}
+
+.field-toggle-card input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-gema);
+}
+
+.filter-rule-card {
+    border-left: 5px solid var(--accent-blue) !important;
+    background: #fff;
+}
+
+.filter-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+/* --- Corrección de desbordamiento en Filtros --- */
+.filter-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    width: 100%; /* Asegura que la fila use todo el ancho */
+}
+
+/* IMPORTANTE: Aplicamos min-width: 0 para que los elementos flex 
+   puedan encogerse más allá del tamaño intrínseco de los inputs 
+*/
+.filter-row > div {
+    min-width: 0; 
+}
+
+/* Ajuste específico para el input de valor */
+.filter-row div:last-child {
+    flex: 1.5; /* Le damos un poco más de peso al campo de valor */
+}
+
+.filter-row .form-control-gema {
+    width: 100%; /* El input debe obedecer al ancho del div padre */
+    box-sizing: border-box; /* Incluye el padding en el cálculo del ancho */
+}
+
+/* Estilo para el botón API en el header */
+#btn-api-modulo {
+    color: white !important;      /* Forzamos el color blanco */
+    text-decoration: none;        /* Quitamos el subrayado de link */
+    font-weight: bold;            /* Lo hacemos resaltar */
+    font-size: 0.9rem;            /* Tamaño equilibrado con el icono */
+    padding: 10px 10px;            /* Espaciado interno */
+    border-radius: 6px;           /* Bordes redondeados */
+    transition: all 0.3s ease;    /* Suavidad al pasar el mouse */
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+}
+
+/* Efecto al pasar el mouse */
+#btn-api-modulo:hover {
+    background-color: #1B2A4A;                                         
+}
+
+/* Alineación general del contenedor de botones */
+.botones-header {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio entre el botón API y el icono de salir */
+}

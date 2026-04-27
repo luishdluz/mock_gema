@@ -1,0 +1,860 @@
+/* --- Ajustes de Contenedor --- */
+.contenedor-app {
+    padding-top: 93px; /* Altura del header */
+    background-color: #f5f6fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- Barra de Herramientas API --- */
+.barra-herramientas-api {
+    background: white;
+    padding: 10px 0px;
+    border-bottom: 1px solid #e1e4e8;
+    position: sticky;
+    top: 100px; /* Se pega justo debajo del header principal */
+    z-index: 90;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.contenedor-busqueda {
+    max-width: 1400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+/* Logo y Título */
+.brand-api {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: fit-content;
+}
+
+.gema-logo-mini {
+    height: 70px;
+    width: auto;
+}
+
+.brand-api h1 {
+    font-size: 1.8rem;
+    color: #204C74;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.brand-api h1 span {
+    color: #007279;
+    font-weight: 300;
+}
+
+/* Caja de Búsqueda Expandida */
+.search-wrapper {
+    flex: 1;
+    max-width: 800px;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    color: #a0aec0;
+}
+
+#api-search {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: 2px solid #edf2f7;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+    background: #f8fafc;
+}
+
+#api-search:focus {
+    border-color: #007279;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(0, 114, 121, 0.1);
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+    .contenedor-busqueda {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .search-wrapper {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+
+/* --- Contenedor de Fuentes --- */
+.grid-api-fuentes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 30px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* --- Área de Documentación y Pruebas --- */
+.api-workspace {
+    display: none; /* Se activa al elegir una fuente */
+    background: white;
+    margin: 0 40px 40px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.workspace-header {
+    background: #204C74;
+    color: white;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Tabs Estilo Consola */
+.api-tabs {
+    display: flex;
+    background: #f1f4f8;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.api-tab-btn {
+    padding: 15px 30px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #64748b;
+    border-right: 1px solid #e2e8f0;
+}
+
+.api-tab-btn.active {
+    background: white;
+    color: #007279;
+    border-bottom: 3px solid #007279;
+}
+
+/* Contenido de Tabs */
+.tab-pane-api {
+    padding: 30px;
+    display: none;
+}
+.tab-pane-api.active { display: block; }
+
+/* Bloques de Código */
+.code-block {
+    background: #1e293b;
+    color: #f8fafc;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: 'Consolas', monospace;
+    font-size: 0.9rem;
+    position: relative;
+    margin: 15px 0;
+    overflow-x: auto;
+}
+
+.method-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.75rem;
+    margin-right: 10px;
+}
+.get { background: #dcfce7; color: #166534; }
+.post { background: #dbeafe; color: #1e40af; }
+
+/* Consola de Pruebas (Playground) */
+.playground-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.console-input-group {
+    margin-bottom: 20px;
+}
+
+.console-response {
+    background: #0f172a;
+    color: #38bdf8;
+    padding: 20px;
+    border-radius: 8px;
+    min-height: 300px;
+    font-family: 'Consolas', monospace;
+}
+
+
+/* --- Layout Principal --- */
+.main-api-layout {
+    display: flex;
+    height: calc(100vh - 180px); /* Ajuste según altura de header y buscador */
+    overflow: hidden;
+}
+
+/* --- Barra Lateral (Fuentes) --- */
+.api-sidebar {
+    width: 350px;
+    background: #f8fafc;
+    border-right: 1px solid #e2e8f0;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+/* --- Área de Contenido (Doc) --- */
+.api-main-content {
+    flex: 1;
+    overflow-y: auto;
+    background: white;
+}
+
+/* --- Estilo de Card Corregido --- */
+.card-fuente-api {
+    background: white !important;
+    border: 1px solid #e1e4e8;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.card-fuente-api:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: #007279;
+}
+
+.card-fuente-api.selected {
+    border-left: 5px solid #007279;
+    background: #f0f9f9 !important;
+}
+
+.card-fuente-api h3 {
+    font-size: 1rem;
+    margin: 8px 0;
+    color: #204C74;
+}
+
+/* --- Otros --- */
+.placeholder-api {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #94a3b8;
+    text-align: center;
+}
+
+.api-workspace {
+    margin: 0 auto;
+}
+
+/* --- Ajustes Base del Contenedor --- */
+.contenedor-app {
+    padding-top: 91px; /* Tamaño exacto del header en header.css */
+    background-color: #f4f7f9;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Barra de Herramientas API (LA CORRECCIÓN) --- */
+.barra-herramientas-api {
+    background: white;
+    padding: 10px 0px;
+    border-bottom: 1px solid #e2e8f0;
+    position: sticky;
+    top: 100px; /* Se pega justo debajo del header fijo */
+    z-index: 90;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    
+    /* Agregamos esto para que el logo y el buscador estén en la misma línea */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.brand-api {
+    display: flex;
+    align-items: center;
+    min-width: fit-content;
+}
+
+.gema-logo-mini {
+    height: 70px;
+    width: auto;
+}
+
+.search-wrapper {
+    flex: 1; /* Esto hace que el buscador ocupe el espacio restante */
+    max-width: 800px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 20px;
+    border: 2px solid #edf2f7;
+    border-radius: 10px;
+    background: #f8fafc;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.search-box input:focus {
+    border-color: #007279;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(0, 114, 121, 0.1);
+}
+
+/* --- Layout Principal --- */
+.main-api-layout {
+    display: flex;
+    /* Ajustamos el alto restando Header (100px) y Barra de Herramientas (~80px) */
+    height: calc(100vh - 180px); 
+    overflow: hidden;
+}
+
+/* Barra Lateral de Fuentes */
+.api-sidebar {
+    width: 350px;
+    background: #f8fafc;
+    border-right: 1px solid #e2e8f0;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+/* Área de Contenido de la derecha */
+.api-main-content {
+    flex: 1;
+    overflow-y: auto;
+    background: white;
+}
+
+/* --- Estilo de Card para la barra lateral --- */
+.card-fuente-api {
+    background: white;
+    border: 1px solid #e1e4e8;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.card-fuente-api:hover {
+    border-color: #007279;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card-fuente-api.selected {
+    border-left: 5px solid #007279;
+    background: #f0f9f9;
+}
+
+.workspace-header {
+    background: #204C74;
+    color: white;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.badge-metodo {
+    background: #007279;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.api-section { margin-bottom: 30px; }
+
+.diccionario-grid-api {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.dic-item-api {
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border-left: 3px solid #007279;
+}
+
+.dic-item-api strong { color: #204C74; font-family: monospace; }
+.dic-item-api p { font-size: 0.8rem; margin-top: 5px; color: #64748b; }
+
+.playground-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+}
+
+.json-viewer {
+    background: #0f172a;
+    color: #38bdf8;
+    padding: 20px;
+    border-radius: 8px;
+    height: 350px;
+    overflow-y: auto;
+    font-size: 0.85rem;
+}
+
+/* Estilo para el token largo (evita que se salga de la caja) */
+.token-wrap {
+    word-break: break-all; /* Rompe el texto largo */
+    white-space: pre-wrap;
+    font-size: 0.8rem !important;
+    line-height: 1.4;
+    color: #38bdf8 !important; /* Color azul brillante tipo código */
+    border-left: 4px solid #007279;
+}
+
+/* Tabla de especificaciones técnicas */
+.tabla-tecnica-container {
+    margin-top: 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tabla-tecnica {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.tabla-tecnica td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.tabla-tecnica tr:last-child td {
+    border-bottom: none;
+}
+
+.tabla-tecnica td:first-child {
+    background-color: #f8fafc;
+    width: 30%;
+    color: #204C74;
+    font-weight: 600;
+}
+
+.tabla-tecnica code {
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #c21832;
+    font-family: Consolas, monospace;
+}
+
+/* Cabecera de Endpoint */
+.endpoint-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 10px;
+}
+
+/* Tabla de Parámetros */
+.tabla-parametros-container {
+    overflow-x: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.tabla-parametros {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    text-align: left;
+}
+
+.tabla-parametros th {
+    background: #f8fafc;
+    color: #1e293b;
+    padding: 12px 15px;
+    font-weight: bold;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.tabla-parametros td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+.tabla-parametros code {
+    color: #c21832;
+    font-weight: bold;
+}
+
+/* Tags de Requerimiento */
+.req-tag, .opt-tag, .cond-tag {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.req-tag { background: #fee2e2; color: #991b1b; } /* Rojo suave */
+.opt-tag { background: #f1f5f9; color: #475569; } /* Gris */
+.cond-tag { background: #fef3c7; color: #92400e; } /* Ámbar */
+
+.row-highlight {
+    background-color: #f0f9f9;
+}
+
+/* Contenedor del Diccionario */
+.diccionario-grid-api {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Tarjeta Completa de Campo */
+.dic-card-full {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.dic-card-full:hover {
+    border-color: #007279;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.dic-card-header {
+    background: #f8fafc;
+    padding: 10px 15px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dic-card-header strong {
+    color: #204C74;
+    font-family: 'Consolas', monospace;
+    font-size: 1rem;
+}
+
+.tipo-tag {
+    background: #e2e8f0;
+    color: #475569;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.dic-card-body {
+    padding: 15px;
+}
+
+.dic-desc {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+/* Tabla interna de detalles */
+.tabla-dic-mini {
+    width: 100%;
+    font-size: 0.75rem;
+    color: #475569;
+    border-collapse: collapse;
+}
+
+.tabla-dic-mini td {
+    padding: 4px 0;
+    width: 50%;
+}
+
+.tabla-dic-mini strong {
+    color: #1e293b;
+}
+
+/* Preview de Catálogo */
+.catalogo-preview {
+    margin-top: 10px;
+    padding: 8px;
+    background: #f1f5f9;
+    border-radius: 6px;
+    border: 1px dashed #cbd5e1;
+}
+
+.catalogo-preview small {
+    display: block;
+    color: #94a3b8;
+    margin-bottom: 4px;
+}
+
+.catalogo-preview code {
+    font-size: 0.75rem;
+    color: #c21832;
+    word-break: break-all;
+}
+
+
+/* --- Estilos del Tester/Playground --- */
+.tester-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Caja del Generador de Token */
+.token-generator-box {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.token-info h4 { margin: 0; color: #1e293b; }
+.token-info p { margin: 5px 0 0 0; font-size: 0.85rem; color: #64748b; }
+
+.token-action {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    max-width: 600px;
+}
+
+.token-input {
+    font-family: monospace;
+    font-size: 0.75rem !important;
+    background: #fff !important;
+    color: #007279;
+}
+
+/* Grid del Formulario */
+.params-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.full-width { grid-column: span 2; }
+
+.btn-execute {
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 114, 121, 0.2);
+}
+
+/* Visor JSON */
+.response-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.json-container {
+    background: #0f172a;
+    border-radius: 12px;
+    padding: 20px;
+    height: 520px;
+    overflow-y: auto;
+    border: 1px solid #1e293b;
+}
+
+.json-viewer {
+    margin: 0;
+    color: #38bdf8;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.status-badge {
+    background: #dcfce7;
+    color: #166534;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+
+/* --- Estilos Avanzados para Inputs GEMA --- */
+.form-control-gema {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #1e293b;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* Efecto de Foco con Resplandor (Glow) */
+.form-control-gema:focus {
+    border-color: #007279;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(0, 114, 121, 0.15), 
+                0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Estilo para Inputs de solo lectura (como el ID de Fuente) */
+.form-control-gema[readonly] {
+    background-color: #f1f5f9;
+    border-color: #e2e8f0;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
+/* --- Especial: Input del Token JWT --- */
+.token-input-container {
+    position: relative;
+    width: 100%;
+}
+
+.token-input {
+    font-family: 'Consolas', 'Monaco', monospace !important;
+    font-size: 0.8rem !important;
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    color: #007279;
+    letter-spacing: 0.5px;
+    padding-right: 40px; /* Espacio para un posible icono */
+}
+
+/* Efecto cuando el token se genera (clase temporal por JS) */
+.token-generated-flash {
+    animation: flash-green 1s ease-out;
+}
+
+@keyframes flash-green {
+    0% { border-color: #007279; box-shadow: 0 0 20px rgba(0, 114, 121, 0.5); }
+    100% { border-color: #007279; box-shadow: 0 0 0 4px rgba(0, 114, 121, 0.15); }
+}
+
+/* --- Labels Animados (Estilo flotante sutil) --- */
+.form-group-api label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #475569;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.form-group-api:focus-within label {
+    color: #007279;
+}
+
+/* --- Botones con Efectos --- */
+.btn-secundario {
+    background: #ffffff;
+    color: #204C74;
+    border: 2px solid #204C74;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-secundario:hover {
+    background: #204C74;
+    color: white;
+    box-shadow: 0 4px 12px rgba(32, 76, 116, 0.2);
+}
+
+.btn-execute {
+    background: linear-gradient(135deg, #007279 0%, #005a60 100%);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-execute:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 114, 121, 0.3);
+}
+
+.btn-execute:active {
+    transform: translateY(0);
+}
+
+/* --- Botón de Cierre Estilizado --- */
+.btn-close-preview {
+    background: rgba(255, 255, 255, 0.1); /* Fondo sutil semi-transparente */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%; /* Lo hace circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0;
+    outline: none;
+}
+
+.btn-close-preview:hover {
+    background: #c21832; /* Cambia a rojo institucional al pasar el mouse */
+    border-color: #c21832;
+    transform: rotate(90deg); /* Efecto de rotación elegante */
+    box-shadow: 0 4px 12px rgba(194, 24, 50, 0.4);
+    color: white;
+}
+
+.btn-close-preview:active {
+    transform: rotate(90deg) scale(0.9); /* Pequeño "click" visual */
+}
+
+/* Ajuste para que el SVG esté centrado */
+.btn-close-preview svg {
+    display: block;
+}

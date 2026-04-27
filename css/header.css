@@ -1,0 +1,276 @@
+* {
+    max-width: 100%;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    /*background-image: url(../../imagenes/vn/header_bg.jpg);*/
+    background-image: url(../imagenes/LogoNBM.png);
+    /*background-size: 100% 100%;*/
+    background-repeat: no-repeat;
+    background-position: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 0;
+    box-sizing: border-box;
+    z-index: 100;
+    background-color: #080611;
+    background-size: auto 100%;
+}
+
+/* =============================
+   LOGO DEL BANCO
+============================= */
+.grupo-izquierdo {
+    display: flex;
+    align-items: center;
+}
+
+.bml {
+    height: 50px;
+    width: auto;
+    display: none;
+}
+
+.bml2 {
+    height: 60px;
+    width: auto;
+    display: none;
+}
+
+.logo {
+    height: 100px;
+    width: auto;
+    display: none;
+}
+
+/* =============================
+   CONTENEDOR DEL USUARIO
+============================= */
+.usuario {
+    display: flex;
+    align-items: stretch;      /* Foto ocupa todo el alto */
+    height: 100%;              /* Igual al header */
+    margin-right: 0;
+}
+
+/* Columna izquierda: info + botones */
+.usuario-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(32, 76, 116, 1);
+    height: 100%;
+    padding-left: 20px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+/* Info del usuario (nombre y clave) */
+.usuario-main .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 15px;
+    text-align: left;
+}
+
+.nombre-usuario {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.numero-usuario {
+    font-size: 13px;
+    color: #e5e5e5;
+    white-space: nowrap;
+}
+
+/* Botones: uno debajo del otro */
+.botones-header {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.icono-header {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* =============================
+   FOTO DE USUARIO (media luna)
+============================= */
+.foto-usuario {
+    height: 100%;
+    width: auto;
+    border-radius: 50% 0 0 50%;  
+    object-fit: cover;
+    display: block;
+    border-left: 3px solid #62DDFC;
+}
+
+
+/* =============================
+   BOTONES DE ACCION
+============================= */
+header .botones a, .btn-config {
+    background: #007279;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-width: 1.9em;
+    min-height: 1.9em;
+    padding: 5px;
+    margin: 0px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+header .botones a:hover, .btn-config:hover {
+    background: #1B2A4A;    
+}
+
+
+
+
+/* =============================
+   SUBMENU DE IDIOMA
+============================= */
+.boton-config {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Submenu oculto por defecto */
+.submenu-idiomas {
+    display: none;
+    position: absolute;
+    top: 76px;
+    background-color: #eef3f3;
+    border-radius: 6px;
+    padding: 5px;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 200;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* Cada opción del submenu */
+.submenu-idiomas a img {
+    display: block;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    transition: transform 0.2s;
+}
+
+.submenu-idiomas a img:hover {
+    transform: scale(1.1);
+}
+
+/* Clase que se agrega para mostrar el submenu */
+.submenu-idiomas.show {
+    display: flex;
+}
+
+
+/* =============================
+   RESPONSIVO – MOVIL
+============================= */
+@media (max-width: 1126px) {
+
+    header {
+        /*background-image: none !important;*/
+        /*background-color: #152340 !important;*/
+        background-color: #080611;
+        background-size: 60% 100%;
+        height: 60px;
+    }
+
+    .grupo-izquierdo .bml {
+        display: block;
+        height: 40px;
+    } 
+    
+    .grupo-izquierdo .bml2 {
+        display: block;
+        height: 60px;
+    } 
+
+    .logo{
+        height: 50px;
+        width: 180px;
+    }
+
+    /* Ocultar nombre y clave */
+    .usuario-main .info {
+        display: none;
+    }
+
+    /* Reacomodar contenedor */
+    .usuario {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    .foto-usuario {
+        height: 100%;
+        border-radius: 50% 0 0 50%;  
+    }
+
+    .botones-header {
+        margin-right: 15px;
+    }
+
+    .usuario-main {
+        padding-left: 0px;
+        background: none;
+    }
+
+    .iconos-movil {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 10px;
+    }
+
+    .iconos-movil button img {
+        width: 26px;
+        height: 26px;
+    }
+
+    header .botones a, .btn-config {
+        min-width: 1.5em;
+        min-height: 1.5em;
+    }
+
+    .submenu-idiomas {
+        top: 60px;
+    }
+    
+}
+
+
+
+.btn-menu{
+    cursor: pointer;
+    display: none;
+}
+
+
+
