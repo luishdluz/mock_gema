@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Header-->
+    <link rel="stylesheet" href="css/header.css">
+
+    <link rel="stylesheet" href="css/gema-api.css">
+    <!-- Titulo de pagina -->
+    <title>GEMA</title>
+</head>
+
+<body>
+
+	<!-- Header -->
+	<header>
+      <div class="grupo-izquierdo">
+        <img src="imagenes/logo1.png" alt="Banco de Mexico" class="logo" />
+      </div>
+      <div class="usuario">
+        <!-- Bonones de accion -->
+        <div class="botones-header desktop-only botones">          
+          <a href="#" data-tooltip="Cerrar sesión" data-tooltip-position="bottom">
+            <img src="imagenes/salir.svg" alt="Cerrar sesión" data-imgtype="d" width="24" height="24">
+          </a>
+        </div>
+        <div class="usuario-main">
+          <div class="info">
+            <div class="nombre-usuario">Luis Antonio Hernández De La Luz</div>
+            <div class="nombre-usuario">B16847 - 002001</div>
+          </div>
+          <img src="imagenes/b16847.png" alt="Usuario" class="foto-usuario">
+        </div>
+      </div>
+    </header>
+
+    
+    <!-- Contenido de la aplicación -->
+<div class="contenedor-app">
+    <section class="barra-herramientas-api">
+        <div class="brand-api">
+            <img src="imagenes/IconoGEMA-API.svg" alt="GEMA Logo" class="gema-logo-mini">
+        </div>
+        <div class="search-wrapper">
+            <div class="search-box">
+                <input type="text" id="api-search" placeholder="Buscar fuente por nombre o ID...">
+            </div>
+        </div>
+    </section>
+
+    <div class="main-api-layout">
+        <aside class="api-sidebar">
+            <div id="api-fuentes-container" class="grid-api-fuentes-vertical">
+                </div>
+        </aside>
+
+        <main class="api-main-content">
+            <div id="welcome-msg" class="placeholder-api">
+                <img src="imagenes/IconoGEMA.svg" style="width: 80px; opacity: 0.2;">
+                <p>Selecciona una fuente de la izquierda para ver su documentación y realizar pruebas.</p>
+            </div>
+            
+            <section class="api-workspace" style="display: none;">
+    <div class="workspace-header">
+        <div class="titulo-doc">
+            <h2 id="workspace-title">Nombre de la Fuente</h2>
+        </div>
+        <button class="btn-close-preview" title="Cerrar documentación" onclick="$('.api-workspace').hide(); $('#welcome-msg').show();">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+</button>
+    </div>
+
+    <div class="api-tabs">
+        <button class="api-tab-btn active" onclick="switchApiTab(this, 'api-guia')">Guía de uso</button>
+        <button class="api-tab-btn" onclick="switchApiTab(this, 'api-diccionario-ref')">Diccionario de datos</button>
+        <button class="api-tab-btn" onclick="switchApiTab(this, 'api-tester')">Probar API</button>
+    </div>
+
+    <div class="api-workspace-body">
+<div id="api-guia" class="tab-pane-api active">
+    <div class="api-section">
+        <h3>1. Token de Consulta</h3>
+        <p>El token de consulta es un requisito necesario para poder utilizar el API. Consiste en caracteres alfanuméricos y debe ser enviado cada vez que se interactúe con los servicios provistos a través del JSON de entrada.</p>
+        
+        <label class="label-editable">Ejemplo de Token</label>
+        <div class="code-block token-wrap">eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJUb2tlbiIsImlhdCI6MTY5NzIyOTQwMCwiZXhwIjoxNjk3MjI5NDYwLCJtZW5zYWplIjoiR2VuZXJvIHVuIHRva2VuIHBhcmEgdXNhciBlbCBBUElGRiIsInRpcG9MbGF2ZSI6InB1YmxpY2EiLCJ1c3VhcmlvIjoicHVibGljbyJ9.MknHZlzvcUa0KKiMPglWXGdb6hflkn49L8cYdx__TbY</div>
+    </div>
+
+    <div class="api-section">
+        <h3>2. ¿Cómo generar el token externamente?</h3>
+        <p>Para obtener un token válido, se debe consumir el siguiente servicio técnico:</p>
+        
+        <div class="tabla-tecnica-container">
+            <table class="tabla-tecnica">
+                <tr>
+                    <td><strong>URL del servicio</strong></td>
+                    <td><code>https://www.banxico.org.mx/GEMA/API/generaTokenAPIIF</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Método</strong></td>
+                    <td><span class="metodo post">POST</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Content-Type</strong></td>
+                    <td><code>application/json</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Formato de respuesta</strong></td>
+                    <td>Texto (String)</td>
+                </tr>
+                <tr>
+                    <td><strong>Datos de entrada</strong></td>
+                    <td><i style="color: #94a3b8;">No se requieren datos de entrada</i></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="api-section">
+    <div class="endpoint-header">
+        <h3>Servicio /consultarInformacion</h3>
+    </div>
+    <p>Este servicio permite consultar información de diversas fuentes de base de datos de manera dinámica y flexible.</p>
+
+    <h4>Detalles del servicio</h4>
+    <div class="tabla-tecnica-container">
+        <table class="tabla-tecnica">
+            <tr>
+                <td><strong>URL del servicio</strong></td>
+                <td><code>https://www.banxico.org.mx/GEMA/API/consultarInformacion</code></td>
+            </tr>
+            <tr>
+                <td><strong>Método</strong></td>
+                <td><span class="metodo post">POST</span></td>
+            </tr>
+            <tr>
+                <td><strong>Content-Type</strong></td>
+                <td><code>application/json</code></td>
+            </tr>
+            <tr>
+                <td><strong>Formato de respuesta</strong></td>
+                <td>JSON (Objeto con arreglo de datos)</td>
+            </tr>
+        </table>
+    </div>
+
+    <h4>Descripción de entrada (Body)</h4>
+    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 10px;">Envía un objeto JSON con los siguientes parámetros:</p>
+    
+    <div class="tabla-parametros-container">
+        <table class="tabla-parametros">
+            <thead>
+                <tr>
+                    <th>Campo</th>
+                    <th>Tipo</th>
+                    <th>Descripción</th>
+                    <th>Requerido</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>token</code></td>
+                    <td>Texto</td>
+                    <td>Código alfanumérico generado en el servicio de autenticación.</td>
+                    <td><span class="req-tag">Obligatorio</span></td>
+                </tr>
+                <tr>
+                    <td><code>fuente</code></td>
+                    <td>Texto</td>
+                    <td>ID de la fuente (ej: <span id="doc-id-fuente-inline">ID_FUENTE</span>).</td>
+                    <td><span class="req-tag">Obligatorio</span></td>
+                </tr>
+                <tr>
+                    <td><code>camposVisibles</code></td>
+                    <td>Texto</td>
+                    <td>Nombres de campos separados por comas que se desean obtener.</td>
+                    <td><span class="req-tag">Obligatorio</span></td>
+                </tr>
+                <tr>
+                    <td><code>campos</code></td>
+                    <td>Texto</td>
+                    <td>Campos a los cuales se les va a aplicar un filtro.</td>
+                    <td><span class="opt-tag">Opcional</span></td>
+                </tr>
+                <tr>
+                    <td><code>operadores</code></td>
+                    <td>Texto</td>
+                    <td>Operadores lógicos para los filtros (=, >, <, LIKE).</td>
+                    <td><span class="opt-tag">Opcional</span></td>
+                </tr>
+                <tr>
+                    <td><code>valores</code></td>
+                    <td>Texto</td>
+                    <td>Valores correspondientes a los filtros definidos.</td>
+                    <td><span class="opt-tag">Opcional</span></td>
+                </tr>
+                <tr>
+                    <td><code>camposAgrupador</code></td>
+                    <td>Texto</td>
+                    <td>Campos para aplicar operaciones de agregación (SUM, AVG).</td>
+                    <td><span class="opt-tag">Opcional</span></td>
+                </tr>
+                <tr>
+                    <td><code>operadoresAgrupador</code></td>
+                    <td>Texto</td>
+                    <td>Funciones de agrupación a aplicar.</td>
+                    <td><span class="opt-tag">Opcional</span></td>
+                </tr>
+                <tr>
+                    <td><code>agruparPorCampos</code></td>
+                    <td>Texto</td>
+                    <td>Campos base para la agrupación (GROUP BY).</td>
+                    <td><span class="opt-tag">Opcional</span></td>
+                </tr>
+                <tr>
+                    <td><code>ordenamiento</code></td>
+                    <td>Texto</td>
+                    <td>Campos de orden. Usa 1 (Asc) o -1 (Desc).</td>
+                    <td><span class="opt-tag">Opcional</span></td>
+                </tr>
+                <tr>
+                    <td><code>limite</code></td>
+                    <td>Texto</td>
+                    <td>Número de registros. 0 para traer todos.</td>
+                    <td><span class="opt-tag">Opcional</span></td>
+                </tr>
+                <tr class="row-highlight">
+                    <td><code>paginado</code></td>
+                    <td>Texto</td>
+                    <td>1 para activar paginación, 0 para desactivar.</td>
+                    <td><span class="opt-tag">Opcional</span></td>
+                </tr>
+                <tr>
+                    <td><code>pagInicio</code></td>
+                    <td>Texto</td>
+                    <td>Número de página inicial (Solo si paginado es 1).</td>
+                    <td><span class="cond-tag">Condicional</span></td>
+                </tr>
+                <tr>
+                    <td><code>pagFin</code></td>
+                    <td>Número</td>
+                    <td>Número de página final (Solo si paginado es 1).</td>
+                    <td><span class="cond-tag">Condicional</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+        <div id="api-diccionario-ref" class="tab-pane-api">
+            <h3>Diccionario de datos</h3>
+            <div id="api-diccionario-list" class="diccionario-grid-api">
+                </div>
+        </div>
+
+        <div id="api-tester" class="tab-pane-api">
+    <div class="tester-container">
+        <div class="token-generator-box">
+            <div class="token-info">
+                <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 5px;"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3m-3-3l2.5-2.5"></path></svg> Autenticación</h4>
+                <p>Genera un token temporal para autorizar tus peticiones de prueba.</p>
+            </div>
+            <div class="token-action">
+                <button class="btn-secundario" onclick="generarTokenJWT()">Generar JWT de prueba</button>
+                <input type="text" id="token-display" class="form-control-gema token-input" placeholder="Token no generado..." readonly>
+            </div>
+        </div>
+
+        <div class="playground-layout">
+            <div class="params-side">
+                <h3>Parámetros de la Consulta</h3>
+                <div class="params-grid">
+                    <div class="form-group-api full-width">
+                        <label>ID de Fuente</label>
+                        <input type="text" id="test-id-fuente" class="form-control-gema" readonly>
+                    </div>
+                    
+                    <div class="form-group-api full-width">
+                        <label>Campos Visibles (separados por coma)</label>
+                        <input type="text" id="test-visibles" class="form-control-gema" placeholder="CAMPO1, CAMPO2, CAMPO3">
+                    </div>
+
+                    <div class="form-group-api">
+                        <label>Campos (Filtro)</label>
+                        <input type="text" id="test-campos" class="form-control-gema" placeholder="CAMPO_A">
+                    </div>
+                    <div class="form-group-api">
+                        <label>Operadores</label>
+                        <input type="text" id="test-operadores" class="form-control-gema" placeholder="=">
+                    </div>
+                    <div class="form-group-api full-width">
+                        <label>Valores</label>
+                        <input type="text" id="test-valores" class="form-control-gema" placeholder="Valor">
+                    </div>
+
+                    <div class="form-group-api">
+                        <label>Campos Agrupador</label>
+                        <input type="text" id="test-agrup-campos" class="form-control-gema" placeholder="MONTO">
+                    </div>
+                    <div class="form-group-api">
+                        <label>Operadores Agrupador</label>
+                        <input type="text" id="test-agrup-ops" class="form-control-gema" placeholder="SUM">
+                    </div>
+                    
+                    <div class="form-group-api">
+                        <label>Agrupar por Campos</label>
+                        <input type="text" id="test-groupby" class="form-control-gema" placeholder="FECHA">
+                    </div>
+                    <div class="form-group-api">
+                        <label>Ordenar por Campos</label>
+                        <input type="text" id="test-order" class="form-control-gema" placeholder="ID:1">
+                    </div>
+
+                    <div class="form-group-api full-width">
+                        <label>Número máximo de registros (Límite)</label>
+                        <input type="number" id="test-limit" class="form-control-gema" value="10" min="0">
+                    </div>
+                </div>
+
+                <button class="btn-primary btn-execute" onclick="consultarInformacionApi()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 8px;"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                    CONSULTAR INFORMACIÓN
+                </button>
+            </div>
+
+            <div class="response-side">
+                <div class="response-header">
+                    <h3>Resultado JSON</h3>
+                    <span id="status-pill" class="status-badge" style="display:none;">200 OK</span>
+                </div>
+                <div class="json-container">
+                    <pre id="api-response-viewer" class="json-viewer">Presiona "Consultar Información" para ver los datos...</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</section>
+        </main>
+    </div>
+</div>
+
+
+
+  <!-- Librerias de jquery -->
+  <script src="js/librerias/jquery-3.7.1.min.js"></script>
+  <script type='text/javascript' src='js/librerias/jquery-ui.min.js' charset="UTF-8"></script>
+  <link rel="stylesheet" href="js/librerias/jquery-ui.css" />
+
+  <script src="js/api.js"></script>
+
+
+</body>
+
+</html>

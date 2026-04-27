@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>GEMA - Gestión de Fuentes de Datos</title>
+</head>
+<body>
+
+    <header>
+      <div class="grupo-izquierdo">
+        <img src="imagenes/logo1.png" alt="Banco de Mexico" class="logo" />
+      </div>
+      <div class="usuario">
+        <div class="botones-header desktop-only botones">          
+          <a href="gema-api.html" id="btn-api-modulo" data-tooltip="Ir a GEMA-API">
+            API
+          </a>
+          <a href="#" data-tooltip="Cerrar sesión">
+            <img src="imagenes/salir.svg" alt="Cerrar sesión" width="24" height="24">
+          </a>
+        </div>
+        <div class="usuario-main">
+          <div class="info">
+            <div class="nombre-usuario">Luis Antonio Hernández De La Luz</div>
+            <div class="nombre-usuario">B16847 - 002001</div>
+          </div>
+          <img src="imagenes/b16847.png" alt="Usuario" class="foto-usuario">
+        </div>
+      </div>
+    </header>
+
+    <nav class="gema-nav-superior">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="imagenes/IconoGEMA.svg" alt="GEMA Icon" class="gema-icon-logo">
+            </div>
+            
+            <div class="nav-search">
+                <div class="search-wrapper">
+                    <input type="text" id="main-search" placeholder="Búsqueda global de fuentes...">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <button class="btn-nueva-fuente-nav" id="btn-nueva-fuente">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="contenedor-app">
+        <div class="section-header">
+        </div>
+        
+        <div class="fuentes-grid" id="fuentes-container">
+            </div>
+    </div>
+
+    <div id="modal-admin" class="modal">
+        <div class="modal-content admin-size">
+            </div>
+    </div>
+    <div id="modal-preview" class="modal">
+        <div class="modal-content preview-size">
+            </div>
+    </div>
+
+
+    <script src="js/librerias/jquery-3.7.1.min.js"></script>
+    <script src="js/librerias/jquery-ui.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
