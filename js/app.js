@@ -115,7 +115,7 @@ let fuentes = [
 ];
 
 let fuenteActual = null;
-const APPS_SISTEMA = ["Explorador de datos", "Laboratorio de datos", "PIIF", "APIIF"];
+const APPS_SISTEMA = ["Explorador de datos", "Laboratorio de datos", "APIIF"];
 
 $(document).ready(function() {
     renderFuentes(fuentes);
