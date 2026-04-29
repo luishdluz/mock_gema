@@ -338,8 +338,18 @@ function renderListaUsuarios() {
 }
 
 function renderPanelApps() {
-    if (!usuarioSeleccionado) return `<div class="placeholder-api" style="height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#94a3b8;"><p>Selecciona un usuario.</p></div>`;
+    if (!usuarioSeleccionado) {
+        return `<div class="placeholder-api" style="height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#94a3b8;"><p>Selecciona un usuario.</p></div>`;
+    }
+
     const userData = fuenteActual.permisosUsuarios.find(u => u.user === usuarioSeleccionado);
+
+    // VALIDACIÓN DE SEGURIDAD: Si el usuario ya no existe en la lista, limpiamos la selección
+    if (!userData) {
+        usuarioSeleccionado = null;
+        return `<div class="placeholder-api" style="height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#94a3b8;"><p>Selecciona un usuario.</p></div>`;
+    }
+
     const userApps = userData.apps || [];
     return `
         <h4 style="color:#204C74; margin:0;">Accesos: <span style="color:#007279;">${usuarioSeleccionado}</span></h4>
